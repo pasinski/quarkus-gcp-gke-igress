@@ -1,8 +1,9 @@
 FROM openjdk:18
-MAINTAINER baeldung.com
-COPY target/quarkus-app/app app
-COPY target/quarkus-app/lib lib
-COPY target/quarkus-app/quarkus quarkus
-COPY target/quarkus-app/quarkus-run.jar app.jar
+MAINTAINER pasinski@gmail.com
+WORKDIR ./target/quarkus-app
+ADD app app
+ADD lib lib
+ADD quarkus quarkus
+ADD quarkus-run.jar app.jar
 expose 8080
 ENTRYPOINT ["java","-jar","/app.jar"]

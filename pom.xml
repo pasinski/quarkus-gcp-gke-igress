@@ -34,6 +34,10 @@
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-resteasy-reactive-jsonb</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
     </dependency>
     <dependency>
@@ -46,6 +50,42 @@
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <!-- Quarkus Hibernate ORM specific dependencies -->
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm-panache</artifactId>
+    </dependency>
+
+    <!-- Hibernate -->
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-core</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-smallrye-health</artifactId>
+    </dependency>
+
+    <!-- Spanner Dialect not required, as we use hibernate 6-->
+<!--    <dependency>-->
+<!--      <groupId>com.google.cloud</groupId>-->
+<!--      <artifactId>google-cloud-spanner-hibernate-dialect</artifactId>-->
+<!--      <version>2.0.0</version>-->
+<!--    </dependency>-->
+
+    <!-- JDBC Driver -->
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-spanner-jdbc</artifactId>
+      <version>2.14.4</version>
+    </dependency>
+
   </dependencies>
   <build>
     <plugins>

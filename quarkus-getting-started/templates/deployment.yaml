@@ -12,8 +12,16 @@ spec:
       labels:
         app: java-app
     spec:
+      serviceAccountName: quarkus-qs-kube-sa
+      nodeSelector:
+        iam.gke.io/gke-metadata-server-enabled: "true"
       containers:
       - name: java-app-container
-        image: us-central1-docker.pkg.dev/halogen-honor-403909/quickstart-docker-repo/quickstart-image:tag1
+        image: us-central1-docker.pkg.dev/halogen-honor-403909/quickstart-docker-repo/quickstart-image:tag6
         ports:
         - containerPort: 8080
+      livenessProbe:
+        httpGet:
+          path: /q/health/live
+          port: 8080
+        initialDelaySeconds: 3
