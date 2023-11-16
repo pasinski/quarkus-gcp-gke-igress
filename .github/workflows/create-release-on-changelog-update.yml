@@ -3,7 +3,7 @@ name: "Release on push to Changelog on Master"
 on: # yamllint disable-line rule:truthy
   push:
     branches:
-      - ${{ github.event.repository.default_branch }}
+      - 'master'
     paths:
       - './CHANGELOG.md'
 
