@@ -22,6 +22,5 @@ runs:
       with:
         tag_name: ${{ steps.get_max_versions.outputs.max-version }}
         release_name: v${{ steps.get_max_versions.outputs.max-version }}
-        generate_release_notes: true
         draft: false
         prerelease: false
