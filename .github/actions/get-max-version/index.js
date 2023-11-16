@@ -8,7 +8,7 @@ try {
     parseChangelog(pathToChangelog)
         .then( result => {
             const maxVersion = result.versions.filter( version => version.version !== null).map( version => version.version)
-                .sort( (a,b) => a.localeCompare(b))[0];
+                .sort( (a,b) => a.localeCompare(b)).reverse()[0];
             console.log(`max version ${maxVersion}`);
             core.setOutput("max-version", maxVersion );
         } )
