@@ -11,6 +11,11 @@ runs:
   using: "composite"
 
   steps:
+    - uses: actions/checkout@v4
+    - name: "Setup node"
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
     - name: "Determine max version"
       id: get_max_version
       uses: "./.github/actions/get-max-version"
