@@ -1,0 +1,22 @@
+
+on: # yamllint disable-line rule:truthy
+  push:
+    branches:
+      - main
+    paths:
+      - './CHANGELOG.md'
+
+jobs:
+  release:
+    name: "Release"
+    permissions:
+      contents: write
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - uses: actions/checkout@master
+        name: Checkout
+      - name: "Create release"
+        uses: "./.github/actions/create-release-on-changelog-change"
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"

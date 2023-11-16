@@ -1,0 +1,15 @@
+
+name: "Get max version from Changelog file"
+
+description: "Get max version from Changelog file"
+
+inputs:
+  path-to-changelog:
+    description: "path to your changelog file"
+    required: false
+outputs:
+  max-version:
+    description: max released version from changelog
+runs:
+  using: "node20"
+  main: "index.js"
