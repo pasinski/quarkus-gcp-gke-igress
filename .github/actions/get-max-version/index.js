@@ -1,5 +1,7 @@
 const core = require('@actions/core');
 const parseChangelog = require('changelog-parser');
+const _ = require("underscore");
+
 
 try {
     // `who-to-greet` input defined in action metadata file
@@ -7,8 +9,11 @@ try {
     console.log(`Path to changelog ${pathToChangelog}`);
     parseChangelog(pathToChangelog)
         .then( result => {
-            const maxVersion = result.versions.filter( version => version.version !== null).map( version => version.version)
-                .sort( (a,b) => a.localeCompare(b))[0];
+            const versions = result.versions;
+            const versionsNoNull = versions.filter( version => version.version !== null).map( version => version.version);
+            const maxVersion = _.max( versionsNoNull );
+            console.log(`Versions ${JSON.stringify(versions)}`);
+            console.log(`Versions no null ${JSON.stringify(versionsNoNull)}`);
             console.log(`max version ${maxVersion}`);
             core.setOutput("max-version", maxVersion );
         } )
