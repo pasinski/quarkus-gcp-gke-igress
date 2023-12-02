@@ -14,9 +14,7 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      - uses: actions/checkout@master
-        name: Checkout
       - name: "Create release"
-        uses: "./.github/actions/create-release-on-tag"
+        uses: "ergebnis/.github/actions/github/release/create@1.8.0"
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
