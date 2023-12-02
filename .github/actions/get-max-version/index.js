@@ -8,12 +8,7 @@ try {
     const pathToChangelog = core.getInput('path-to-changelog') || "./CHANGELOG.md";
     console.log(`Path to changelog ${pathToChangelog}`);
     parseChangelog(pathToChangelog)
-        .then( result => {
-            const versions = result.versions;
-            const maxVersion = _.max( versions.filter( version => version.version !== null).map( version => version.version) );
-            console.log(`Versions ${versions}`);
-            core.setOutput("max-version", maxVersion );
-        } )
+        .then( result => core.setOutput("max-version", _.max( result.versions.filter( version => version.version !== null).map( version => version.version) ) ) )
         .catch(error => core.setFailed(error.message))
 } catch (error) {
     core.setFailed(error.message);
