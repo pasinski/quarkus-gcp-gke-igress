@@ -14,7 +14,7 @@ terraform {
 }
 
 provider "google" {
-  project = "halogen-honor-403909"
-  region = "us-central1"
-  zone = "us-central1-f"
+  project = var.project_id
+  region = var.region
+  zone = var.zone
 }

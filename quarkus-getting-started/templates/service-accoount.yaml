@@ -3,4 +3,4 @@ kind: ServiceAccount
 metadata:
   name: quarkus-qs-kube-sa
   annotations:
-    "iam.gke.io/gcp-service-account": quickstart-accessspanner@halogen-honor-403909.iam.gserviceaccount.com
+    "iam.gke.io/gcp-service-account": quickstart-accessspanner@{{ .Values.project_id }}}.iam.gserviceaccount.com

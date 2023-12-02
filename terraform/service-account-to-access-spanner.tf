@@ -14,5 +14,5 @@ resource "google_spanner_database_iam_member" "add-qs-sa-to-db" {
 resource "google_service_account_iam_member" "allow_gke_to_use_service" {
   service_account_id = google_service_account.spanner_service_account.id
   role = "roles/iam.workloadIdentityUser"
-  member = "serviceAccount:halogen-honor-403909.svc.id.goog[default/quarkus-qs-kube-sa]"
+  member = "serviceAccount:${var.project_id}.svc.id.goog[default/quarkus-qs-kube-sa]"
 }

@@ -1,11 +1,17 @@
 # code-with-quarkus
 
-1. Build project `./mvnw package`
+1. Prepare google bucket for terraform state preservation:
+   
+   ```shell
+      gcloud storage buckets create gs://michal-pasinski-tf-state
+   ```
+   
+2. Build project `./mvnw package`
 2. create cluster `gcloud container clusters create sample-cluster`
 3. create global loadbalancer `gcloud compute addresses create quarkus-quickstart --global`
    this loadbalancer will be used later on in igress resource `kubernetes.io/ingress.global-static-ip-name: "quarkus-quickstart"`
 4. setup kubectl with `gcloud container clusters get-credentials istio-security-demo --region=us-central1-f`
-5. create interal docker registry 
+5. create interal docker registry (can be done with terraform as well)
 
    ```
    gcloud artifacts repositories create quickstart-docker-repo --repository-format=docker \

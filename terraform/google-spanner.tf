@@ -1,6 +1,6 @@
 resource "google_spanner_instance" "main" {
   name         = "quarkus-quickstart-spanner"  # << be careful changing this in production
-  config       = "regional-us-central1"
+  config       = "regional-${var.region}"
   display_name = "quarkus-quickstart"
   num_nodes    = 1
   labels = {

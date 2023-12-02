@@ -17,11 +17,14 @@ spec:
         iam.gke.io/gke-metadata-server-enabled: "true"
       containers:
       - name: java-app-container
-        image: us-central1-docker.pkg.dev/halogen-honor-403909/quickstart-docker-repo/quickstart-image:tag6
+        image: {{ .Values.region }}-docker.pkg.dev/{{ .Values.project_id }}/quickstart-docker-repo/quickstart-image:tag6
         ports:
         - containerPort: 8080
-      livenessProbe:
-        httpGet:
-          path: /q/health/live
-          port: 8080
-        initialDelaySeconds: 3
+        env:
+          - name: PROJECT_ID
+            value: {{ .Values.project_id }}
+        livenessProbe:
+          httpGet:
+            path: /q/health/live
+            port: 8080
+          initialDelaySeconds: 3
